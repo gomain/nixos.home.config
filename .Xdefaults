@@ -1,0 +1,8 @@
+
+*Background: Black
+*Foreground: Ghost White
+*pointerColor: Ghost White
+*cursorColor: Ghost White
+
+xterm*faceName: terminus
+xterm*faceSize: 11
