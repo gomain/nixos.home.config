@@ -1,9 +1,10 @@
 self: super:
 {
-  myEmacs = import ./my-emacs.nix { super };
-  myPackages = with super; buildEnv {
+  myEmacs = import ./my-emacs.nix self;
+
+  myPackages = with self; buildEnv {
     name = "my-packages";
-    paths = [
+     paths = [
       myEmacs
     ];
   };
