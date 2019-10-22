@@ -1,0 +1,7 @@
+[user]
+	email = gomain@gmail.com
+	name = Joe Gomain Hoyes
+[credential]
+	helper = cache
+[core]
+	askPass = 
