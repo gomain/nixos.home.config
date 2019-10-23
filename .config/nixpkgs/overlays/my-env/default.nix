@@ -1,13 +1,13 @@
 self: super:
 {
-
-  myEmacs = import ./my-emacs self;
-
-  my-nix-env = with self; buildEnv {
-    name = "my-nix-env";
-     paths = [
-       my-emacs
-       keepassxc
-    ];
-  };
+  my-nix-env = with self;
+    let
+      myEmacs = import ./my-emacs self;
+    in buildEnv {
+      name = "my-nix-env";
+      paths = [
+        myEmacs
+        keepassxc
+      ];
+    };
 }

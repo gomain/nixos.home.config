@@ -17,11 +17,19 @@ let
       flycheck
     ]) ++ [ ];
   myEmacsWithPackages = emacsWithPackages myEmacsPackages;
-  myEmacsWithPackagesAndInit = myEmacsWithPackages.overrideAttrs (oldAttr: {
-    postPhasesx = ''
-      install -dm 755 $out/userHome/.emacs.d
+  overrides = oldAttrs:
+  let
+    src = ./.;
+    userHome = out + /userHome;
+  in {
+    pname = "emacs-git-with-packages-and-config";
+    buildCommand = ''
+      ${oldAttrs.buildCommand}
+      echo creating $userHome/.emacs.d
+      install -dm 755 $userHome
+      cp -dr --no-preserve=ownership $src/.emac.d $userHome
     '';
-    });
-in myEmacsWithPackagesAndInit
+  };
+ in myEmacsWithPackages.overrideAttrs overrides
 
 

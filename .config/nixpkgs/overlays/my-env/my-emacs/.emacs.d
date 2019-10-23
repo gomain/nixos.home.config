@@ -1,0 +1,1 @@
+/home/gomain/.emacs.d
