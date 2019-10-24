@@ -17,17 +17,20 @@ let
       flycheck
     ]) ++ [ ];
   myEmacsWithPackages = emacsWithPackages myEmacsPackages;
-  overrides = oldAttrs:
-  let
-    src = ./.;
-    userHome = out + /userHome;
-  in {
-    pname = "emacs-git-with-packages-and-config";
+
+  overrides = oldAttrs: {
+    name = "emacs-git-with-packages-and-emacsd";
+    # path to ./home directory; it is copied to nix/store/...
+    # make directory $out/home and copy contents from ./home
+    # contents will be linked to in ~/.nix-profile/home
+    home = ./home;
     buildCommand = ''
       ${oldAttrs.buildCommand}
-      echo creating $userHome/.emacs.d
-      install -dm 755 $userHome
-      cp -dr --no-preserve=ownership $src/.emac.d $userHome
+      echo creating $out/home/\.\.\.
+      set -x
+      install -dm 755 $out/home/
+      cp -dr --no-preserve=ownership $home/. $out/home
+      set +x
     '';
   };
  in myEmacsWithPackages.overrideAttrs overrides
