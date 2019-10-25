@@ -1,10 +1,9 @@
-pkgs:
+{ emacsGit, emacsPackagesNgGen }:
 let
-  emacs = pkgs.emacsGit;
-  emacsWithPackages = (pkgs.emacsPackagesNgGen emacs).emacsWithPackages;
-  myEmacsPackages = epkgs:
-    (with epkgs.elpaPackages; [ ace-window ])
-    ++ (with epkgs.melpaStablePackages; [
+  emacsWithPackages = (emacsPackagesNgGen emacsGit).emacsWithPackages;
+  myEmacsPackages = epkgs: with epkgs;
+    (with elpaPackages; [ ace-window ])
+    ++ (with melpaStablePackages; [
       edit-server
       nix-mode
       web-mode
@@ -13,7 +12,7 @@ let
       sudo-edit
       haskell-mode
       auto-complete
-    ]) ++ (with epkgs.melpaPackages; [
+    ]) ++ (with melpaPackages; [
       flycheck
     ]) ++ [ ];
   myEmacsWithPackages = emacsWithPackages myEmacsPackages;

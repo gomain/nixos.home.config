@@ -2,7 +2,7 @@ self: super:
 {
   my-nix-env = with self;
     let
-      myEmacs = import ./my-emacs self;
+      myEmacs = super.callPackage ./my-emacs { };
     in buildEnv {
       name = "my-nix-env";
       paths = [
