@@ -3,6 +3,7 @@ self: super:
   my-nix-env = with self;
     let
       myEmacs = with super; callPackage ./my-emacs { };
+      myNodejs = [ nodejs-slim-10_x ] ++ (with nodePackages_10_x; [ node2nix npm ]);
     in buildEnv {
       name = "my-nix-env";
       paths = [
@@ -13,13 +14,10 @@ self: super:
         expect
         keepassxc
         nixfmt
-        nodejs-10_x
-        nodePackages.node2nix
-        nodePackages.npm
         pciutils
         unzip
         xclip
         zip
-      ];
+      ] ++ myNodejs;
     };
 }

@@ -20,17 +20,16 @@ let
   overrides = oldAttrs: {
     name = "emacs-git-with-packages-and-emacsd";
     # path to ./home directory; it is copied to nix/store/...
-    # make directory $out/home and copy contents from ./home
-    # contents will be linked to in ~/.nix-profile/home
     home = ./home;
-    buildCommand = ''
-      ${oldAttrs.buildCommand}
-      echo creating $out/home/\.\.\.
-      set -x
-      install -dm 755 $out/home/
-      cp -dr --no-preserve=ownership $home/. $out/home
-      set +x
-    '';
+    # make directory $out/home and copy contents from ./home
+    # these will installed in ~/.nix-profile/home
+    # intended tobe copied into ~/ of target installation
+    buildCommand = let
+      extraCommand = ''
+        install -dm 755 $out/home/
+        cp -dr --no-preserve=ownership $home/. $out/home
+      '';
+    in oldAttrs.buildCommand + extraCommand;
   };
  in myEmacsWithPackages.overrideAttrs overrides
 
