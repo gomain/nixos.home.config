@@ -59,8 +59,31 @@
 
 (add-hook 'js2-mode 'my-js2-mode-hook)
 
+;; setup tide
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+(setq company-tooltip-align-annotations t)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; setup purscript
+;; (require 'psc-ide)
+(add-hook 'purescript-mode-hook
+          (lambda ()
+            (psc-ide-mode)
+            (company-mode)
+            (flycheck-mode)
+            (turn-on-purescript-indentation)))
 
 ;; global configurations
+(setq max-lisp-eval-depth 2000)
 (global-auto-revert-mode)
 (setq-default indent-tabs-mode nil)
 (setq show-paren-delay 0)
@@ -82,3 +105,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Terminus" :foundry "xos4" :slant normal :weight normal :height 105 :width normal)))))
+(put 'upcase-region 'disabled nil)
