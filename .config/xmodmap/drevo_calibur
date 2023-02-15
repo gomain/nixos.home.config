@@ -1,0 +1,6 @@
+! -*- coding: utf-8 -*-
+! swap Escape with [grave asciitilde]
+! for keyboard: Drevo Calibur
+
+keycode 9 = grave asciitilde
+keycode 49 = Escape

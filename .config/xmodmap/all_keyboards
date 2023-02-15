@@ -1,0 +1,4 @@
+w! -*- coding: utf-8 -*-
+
+! map Menu_Key to Super_R
+keycode 135 = Super_R

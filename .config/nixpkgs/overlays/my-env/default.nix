@@ -4,29 +4,54 @@ let
   my-nix-env = super.buildEnv {
     name = "my-nix-env";
     paths = with self; [
-      aesop
+      # removed from nixpkgs
+      # aesop
       bat
-      chromium
+      bfg-repo-cleaner # tool for rewriting git history
+      exercism
       expect
       file
       firefox
       git
+      git-lfs
+      gh # official github cli
+      graphviz
+      htop
       imagemagick # provides `import` command used to take screenshots
+      insomnia # an api client
       inotify-tools
+      ispell # provides `ispell` command used by emacs' `flyspell-mode`
       keepassxc
       libreoffice
+      lilypond
       multimarkdown # provides `markdown` command used by emacs' `markdown-mode`
       myEmacs
       nix-prefetch-git
       nixfmt # used by emacs command: nix-format-buffer
+      nodePackages.node2nix
       pciutils
+      postman # an api client
       rclone
+      sbcl # a Common Lisp implementation
+      slack
+      tdesktop # official client for Telegram chat: telegram-desktop
       tmux
+      tree
       unzip
+      vivaldi
       xclip
+
       xorg.appres
       zip
-    ];
+      # insecure packages
+      # chromium
+      # xpdf
+    ]
+    /* ++ [
+         haskellPackages.ghcWithPackages (hsPkgs: with hsPkgs; [ xmonad ])
+       ]
+    */
+    ;
     postBuild = ''
       # echo "...ls -la $out/share..."
       # ls -la $out/share

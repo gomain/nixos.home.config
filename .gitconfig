@@ -2,6 +2,15 @@
 	email = gomain@gmail.com
 	name = Joe Gomain Hoyes
 [credential]
-	helper = cache
+	helper = store
 [core]
 	askPass = 
+[pull]
+	ff = only
+[alias]
+	stash-pop-merge = "!go() { git add -u && git stash pop ${1-0} && git reset }; go --"
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

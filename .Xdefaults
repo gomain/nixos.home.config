@@ -9,3 +9,4 @@ xterm*faceSize: 11
 xterm*saveLines: 4096
 xterm*scrollTtyOutput: false
 xterm*scrollKey: true
+xterm*metaSendsEscape: true
