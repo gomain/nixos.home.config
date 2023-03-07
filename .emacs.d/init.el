@@ -117,17 +117,18 @@
 ;(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; setup purscript
-(add-to-list 'load-path "~/purescript-mode/")
-(require 'purescript-mode-autoloads)
-(add-to-list 'Info-default-directory-list "~/purescript-mode/")
-
-;; (require 'psc-ide)
-(add-hook 'purescript-mode-hook
-          (lambda ()
-            (psc-ide-mode)
-            (company-mode)
-            (flycheck-mode)
-            (turn-on-purescript-indentation)))
+;; local purescript-mode is outdated
+;; (add-to-list 'load-path "~/purescript-mode/")
+;; (require 'purescript-mode-autoloads)
+;; (add-to-list 'Info-default-directory-list "~/purescript-mode/")
+;;
+;; ;; (require 'psc-ide)
+;; (add-hook 'purescript-mode-hook
+;;           (lambda ()
+;;             (psc-ide-mode)
+;;             (company-mode)
+;;             (flycheck-mode)
+;;             (turn-on-purescript-indentation)))
 
 ;; global configurations
 (setq max-lisp-eval-depth 2000)
