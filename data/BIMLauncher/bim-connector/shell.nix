@@ -28,7 +28,7 @@ let
       ln -s $out/lib/node_modules/@microsoft/rush/bin $out/bin
     '';
   };
-  typescript = node2nix-packages."typescript-4.5.4".override {
+  typescript = node2nix-packages.typescript.override {
     # without dontNpmInstall, deploy fails with:
     # npm ERR! code ENOTCACHEDn: sill fetchPackageMetKK
     # npm ERR! request to https://registry.npmjs.org/@aws-cdk%2fcloud-assembly-schema failed: cache mode is 'only-if-cached' but no cached response available.
