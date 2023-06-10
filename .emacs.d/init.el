@@ -41,7 +41,8 @@
             (add-to-list 'lsp-disabled-clients 'jsts-ls)
             ;(setq lsp-clients-typescript-tls-path
             ;      "~/BIMLauncher/bim-connector/bimlauncher-connector/production/aconex-sdk/node_modules/.bin/typescript-language-server")
-            (setq lsp-headerline-breadcrumb-enable t)))
+            (setq lsp-headerline-breadcrumb-enable t)
+            (setq lsp-eldoc-render-all t)))
 
 ;; graphviz-dot-mode
 (add-hook 'graphviz-dot-mode-hook
@@ -143,6 +144,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(eldoc-echo-area-prefer-doc-buffer t)
+ '(eldoc-echo-area-use-multiline-p 0.75)
  '(flycheck-checker-error-threshold 5000)
  '(flycheck-checkers
    '(lsp ada-gnat asciidoctor asciidoc awk-gawk bazel-buildifier c/c++-clang c/c++-gcc c/c++-cppcheck cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint css-stylelint cuda-nvcc cwl d-dmd dockerfile-hadolint elixir-credo emacs-lisp emacs-lisp-checkdoc ember-template erlang-rebar3 erlang eruby-erubis eruby-ruumba fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck go-unconvert go-staticcheck groovy haml handlebars haskell-stack-ghc haskell-ghc haskell-hlint html-tidy javascript-eslint javascript-jshint javascript-standard json-jsonlint json-python-json json-jq jsonnet less less-stylelint llvm-llc lua-luacheck lua markdown-markdownlint-cli markdown-mdl nix nix-linter opam perl perl-perlcritic php php-phpmd php-phpcs processing proselint protobuf-protoc protobuf-prototool pug puppet-parser puppet-lint python-flake8 python-pylint python-pycompile python-mypy r-lintr racket rpm-rpmlint rst-sphinx rst ruby-rubocop ruby-standard ruby-reek ruby-rubylint ruby ruby-jruby rust-cargo rust rust-clippy scala scala-scalastyle scheme-chicken scss-lint scss-stylelint sass/scss-sass-lint sass scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim slim-lint sql-sqlint systemd-analyze tcl-nagelfar terraform terraform-tflint tex-chktex tex-lacheck texinfo textlint typescript-tslint verilog-verilator vhdl-ghdl xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby yaml-yamllint rustic-clippy))
