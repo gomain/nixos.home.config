@@ -30,7 +30,7 @@ let
       nixfmt # used by emacs command: nix-format-buffer
       nodePackages.node2nix
       pciutils
-      postman # an api client
+      # postman # an api client
       rclone
       sbcl # a Common Lisp implementation
       slack
