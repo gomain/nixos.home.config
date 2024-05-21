@@ -38,7 +38,7 @@ let
       tmux
       tree
       unzip
-      # vivaldi finds driver but very poor performance
+      vivaldi # known to finds driver but very poor performance
       xclip
 
       xorg.appres
