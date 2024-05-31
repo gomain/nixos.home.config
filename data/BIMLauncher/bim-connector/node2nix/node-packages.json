@@ -1,4 +1,5 @@
 [
   "@aws-amplify/cli",
-  "@microsoft/rush"
+  "@microsoft/rush",
+  { "typescript": "5.2.2" }
 ]

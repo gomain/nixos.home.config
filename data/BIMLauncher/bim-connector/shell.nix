@@ -28,9 +28,18 @@ let
       ln -s $out/lib/node_modules/@microsoft/rush/bin $out/bin
     '';
   };
+  typescript = node2nix-packages."typescript-5.2.2".override {
+    # without dontNpmInstall, deploy fails with:
+    # npm ERR! code ENOTCACHEDn: sill fetchPackageMetKK
+    # npm ERR! request to https://registry.npmjs.org/@aws-cdk%2fcloud-assembly-schema failed: cache mode is 'only-if-cached' but no cached response available.
+    dontNpmInstall = true;
+    postInstall = ''
+      ln -s $out/lib/node_modules/typescript/bin $out/bin
+    '';
+  };
   prisma-stuff = [ prisma-engines ];
   node-packages = with nodePackages; [ pnpm prisma ];
-  node-stuff = node-packages ++ [ nodejs yarn rush ];
+  node-stuff = node-packages ++ [ nodejs yarn rush typescript ];
   aws-stuff = [ amplifycli awscli2 ];
   java = adoptopenjdk-jre-bin; # the java runtime from open jdk
   other-stuff = [ chromium java openssl pgadmin4 ];
